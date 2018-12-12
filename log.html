@@ -16,9 +16,9 @@
   </head>
   <body>
     <nav class="log">
-      <input type="text"id='input'></br>
-      <input type="password" id="PW"></br>
-      <input type="button" onclick='cli()'value="login">
+      <input type="text"id='input'onkeyup="enterkey()"></br>
+      <input type="password" id="PW" onkeyup="enterkey()"></br>
+      <input type="button" onclick="cli()" value="login">
 
     </nav>
     <script>
@@ -26,13 +26,25 @@
       var storeid="ikiscc";
       var storepw="lkk1005";
 
+      function enterkey(){
+        if(window.event.keyCode == 13 ){
+          cli();
+        }
+      }
+
       function cli(){
         var id = document.getElementById('input');
         var pw = document.getElementById('PW');
 
         if(id.value == storeid & pw.value == storepw){
           alert("로그인 되었습니다. 사이트로 이동합니다");
-          }
+          location.href='http://127.0.0.1:8887/test.html'
+        }
+        else{
+          alert("잘못 된 입력입니다. 다시 입력해주십시오.")
+          id.value = null;
+          pw.value = null;
+        }
         }
 
     </script>
